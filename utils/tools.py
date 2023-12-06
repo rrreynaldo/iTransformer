@@ -72,6 +72,7 @@ class StandardScaler():
         return (data - self.mean) / self.std
 
     def inverse_transform(self, data):
+        print("Inverse data:", data)
         return (data * self.std) + self.mean
 
 
