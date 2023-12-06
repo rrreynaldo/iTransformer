@@ -286,6 +286,8 @@ class Dataset_Custom(Dataset):
     def inverse_transform(self, data):
         print("Scaler:", self.scaler)
         print("Data:", data)
+        # Reshaping the 3D data into 2D
+        data.reshape(-1, data[2])
         return self.scaler.inverse_transform(data)
 
 
