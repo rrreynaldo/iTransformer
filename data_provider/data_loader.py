@@ -287,9 +287,19 @@ class Dataset_Custom(Dataset):
         print("Scaler:", self.scaler)
         print("Data:", data)
         print("Data Shape:", data.shape)
-        # Reshaping the 3D data into 2D
-        data.reshape(-1, data[2])
-        return self.scaler.inverse_transform(data)
+
+        # Get the original shape of the data
+        original_shape = data.shape
+        # Reshape the data to 2D
+        data_2d = data.reshape(-1, original_shape[2])
+        # Apply inverse_transform
+        inversed_data_2d = self.scaler.inverse_transform(data_2d)
+        # Reshape the data back to 3D
+        inversed_data_3d = inversed_data_2d.reshape(original_shape)
+        return inversed_data_3d
+        # # Reshaping the 3D data into 2D
+        # data.reshape(-1, data[2])
+        # return self.scaler.inverse_transform(data)
 
 
 class Dataset_PEMS(Dataset):
