@@ -294,18 +294,37 @@ class Dataset_Custom(Dataset):
         print("Scaler var:", self.scaler.var_)
         print("Scaler var shape:", self.scaler.var_.shape)
 
-        # Get the original shape of the data
-        original_shape = data.shape
+        # Get the shape dimension of the data
+        x, y, z = data.shape
         # Reshape the data to 2D
-        data_2d = data.reshape(-1, original_shape[2])
-        # Apply inverse_transform
-        inversed_data_2d = self.scaler.inverse_transform(data_2d)
+        data_2d = data.reshape(-1, z)
+
+        if z == 1:
+            # Use the last element of mean and scale for inverse transformation
+            mean = self.scaler.mean_[-1].reshape(1, -1)
+            scale = self.scaler.scale_[-1].reshape(1, -1)
+            # Apply inverse transformation
+            inversed_data_2d = (data_2d * scale) + mean
+        else:
+            # Apply directly the inverse transformation
+            inversed_data_2d = self.scaler.inverse_transform(data_2d)
+
         # Reshape the data back to 3D
-        inversed_data_3d = inversed_data_2d.reshape(original_shape)
+        inversed_data_3d = inversed_data_2d.reshape(data.shape)
         return inversed_data_3d
-        # # Reshaping the 3D data into 2D
-        # data.reshape(-1, data[2])
-        # return self.scaler.inverse_transform(data)
+
+        # # Get the original shape of the data
+        # original_shape = data.shape
+        # # Reshape the data to 2D
+        # data_2d = data.reshape(-1, original_shape[2])
+        # # Apply inverse_transform
+        # inversed_data_2d = self.scaler.inverse_transform(data_2d)
+        # # Reshape the data back to 3D
+        # inversed_data_3d = inversed_data_2d.reshape(original_shape)
+        # return inversed_data_3d
+        # # # Reshaping the 3D data into 2D
+        # # data.reshape(-1, data[2])
+        # # return self.scaler.inverse_transform(data)
 
 
 class Dataset_PEMS(Dataset):
