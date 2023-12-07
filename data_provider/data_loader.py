@@ -288,6 +288,12 @@ class Dataset_Custom(Dataset):
         print("Data:", data)
         print("Data Shape:", data.shape)
 
+        print("Scaler mean:", self.scaler.mean_)
+        print("Scaler mean shape:", self.scaler.mean_.shape)
+
+        print("Scaler var:", self.scaler.var_)
+        print("Scaler var shape:", self.scaler.var_.shape)
+
         # Get the original shape of the data
         original_shape = data.shape
         # Reshape the data to 2D
