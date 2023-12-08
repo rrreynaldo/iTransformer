@@ -284,15 +284,15 @@ class Dataset_Custom(Dataset):
         return len(self.data_x) - self.seq_len - self.pred_len + 1
 
     def inverse_transform(self, data):
-        print("Scaler:", self.scaler)
-        print("Data:", data)
-        print("Data Shape:", data.shape)
-
-        print("Scaler mean:", self.scaler.mean_)
-        print("Scaler mean shape:", self.scaler.mean_.shape)
-
-        print("Scaler var:", self.scaler.var_)
-        print("Scaler var shape:", self.scaler.var_.shape)
+        # print("Scaler:", self.scaler)
+        # print("Data:", data)
+        # print("Data Shape:", data.shape)
+        #
+        # print("Scaler mean:", self.scaler.mean_)
+        # print("Scaler mean shape:", self.scaler.mean_.shape)
+        #
+        # print("Scaler var:", self.scaler.var_)
+        # print("Scaler var shape:", self.scaler.var_.shape)
 
         # Get the shape dimension of the data
         x, y, z = data.shape
@@ -300,9 +300,17 @@ class Dataset_Custom(Dataset):
         data_2d = data.reshape(-1, z)
 
         if z == 1:
+            # print("Inverting the sole prediction")
+
             # Use the last element of mean and scale for inverse transformation
-            mean = self.scaler.mean_[-1].reshape(1, -1)
-            scale = self.scaler.scale_[-1].reshape(1, -1)
+            mean = self.scaler.mean_[-1]
+            scale = self.scaler.scale_[-1]
+
+            # print("Mean Scaler Shape:", mean.shape)
+            # print("Scale Scaler Shape:", scale.shape)
+
+            # mean = self.scaler.mean_[-1].reshape(1, -1)
+            # scale = self.scaler.scale_[-1].reshape(1, -1)
             # Apply inverse transformation
             inversed_data_2d = (data_2d * scale) + mean
         else:
