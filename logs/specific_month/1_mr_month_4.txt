@@ -1,0 +1,114 @@
+Args in experiment:
+Namespace(is_training=1, model_id='test', model='iTransformer', data='custom', root_path='./target_data/specific_month', data_path='1_mr_month_4_data.csv', features='MS', target='WaterTemperature', freq='h', checkpoints='./checkpoints/', seq_len=731, label_len=731, pred_len=24, enc_in=7, dec_in=7, c_out=1, d_model=512, n_heads=8, e_layers=3, d_layers=1, d_ff=512, moving_avg=25, factor=1, distil=True, dropout=0.1, embed='timeF', activation='gelu', output_attention=False, do_predict=True, num_workers=10, itr=1, train_epochs=10, batch_size=32, patience=3, learning_rate=0.0001, des='April 1 Year Range', loss='MSE', lradj='type1', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', exp_name='MTSF', channel_independence=False, inverse=True, class_strategy='projection', target_root_path='./data/electricity/', target_data_path='electricity.csv', efficient_training=False, use_norm=True, partial_start_index=0)
+Use GPU: cuda:0
+>>>>>>>start training : test_iTransformer_custom_MS_ft731_sl731_ll24_pl512_dm8_nh3_el1_dl512_df1_fctimeF_ebTrue_dtApril 1 Year Range_projection_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 10888
+val 1641
+test 3303
+	iters: 100, epoch: 1 | loss: 0.0735100
+	speed: 0.0253s/iter; left time: 83.4729s
+	iters: 200, epoch: 1 | loss: 0.0407536
+	speed: 0.0189s/iter; left time: 60.5089s
+	iters: 300, epoch: 1 | loss: 0.0358553
+	speed: 0.0186s/iter; left time: 57.5548s
+Epoch: 1 cost time: 7.027111053466797
+Epoch: 1, Steps: 340 | Train Loss: 0.0598295 Vali Loss: 0.0168954 Test Loss: 0.0244040
+Validation loss decreased (inf --> 0.016895).  Saving model ...
+Updating learning rate to 0.0001
+	iters: 100, epoch: 2 | loss: 0.0255338
+	speed: 0.2585s/iter; left time: 765.3387s
+	iters: 200, epoch: 2 | loss: 0.0157870
+	speed: 0.0182s/iter; left time: 51.9864s
+	iters: 300, epoch: 2 | loss: 0.0199099
+	speed: 0.0181s/iter; left time: 49.8741s
+Epoch: 2 cost time: 6.441799879074097
+Epoch: 2, Steps: 340 | Train Loss: 0.0209698 Vali Loss: 0.0127401 Test Loss: 0.0217829
+Validation loss decreased (0.016895 --> 0.012740).  Saving model ...
+Updating learning rate to 5e-05
+	iters: 100, epoch: 3 | loss: 0.0130031
+	speed: 0.2573s/iter; left time: 674.4421s
+	iters: 200, epoch: 3 | loss: 0.0162471
+	speed: 0.0184s/iter; left time: 46.4527s
+	iters: 300, epoch: 3 | loss: 0.0087387
+	speed: 0.0187s/iter; left time: 45.1535s
+Epoch: 3 cost time: 6.451224088668823
+Epoch: 3, Steps: 340 | Train Loss: 0.0138869 Vali Loss: 0.0115227 Test Loss: 0.0206238
+Validation loss decreased (0.012740 --> 0.011523).  Saving model ...
+Updating learning rate to 2.5e-05
+	iters: 100, epoch: 4 | loss: 0.0124465
+	speed: 0.2572s/iter; left time: 586.7515s
+	iters: 200, epoch: 4 | loss: 0.0104300
+	speed: 0.0183s/iter; left time: 39.8415s
+	iters: 300, epoch: 4 | loss: 0.0126664
+	speed: 0.0185s/iter; left time: 38.5196s
+Epoch: 4 cost time: 6.430572986602783
+Epoch: 4, Steps: 340 | Train Loss: 0.0117486 Vali Loss: 0.0103312 Test Loss: 0.0201912
+Validation loss decreased (0.011523 --> 0.010331).  Saving model ...
+Updating learning rate to 1.25e-05
+	iters: 100, epoch: 5 | loss: 0.0138969
+	speed: 0.2565s/iter; left time: 497.8321s
+	iters: 200, epoch: 5 | loss: 0.0097838
+	speed: 0.0180s/iter; left time: 33.1678s
+	iters: 300, epoch: 5 | loss: 0.0107491
+	speed: 0.0179s/iter; left time: 31.2240s
+Epoch: 5 cost time: 6.337022304534912
+Epoch: 5, Steps: 340 | Train Loss: 0.0107521 Vali Loss: 0.0102733 Test Loss: 0.0202964
+Validation loss decreased (0.010331 --> 0.010273).  Saving model ...
+Updating learning rate to 6.25e-06
+	iters: 100, epoch: 6 | loss: 0.0117998
+	speed: 0.2566s/iter; left time: 410.8392s
+	iters: 200, epoch: 6 | loss: 0.0077738
+	speed: 0.0184s/iter; left time: 27.6254s
+	iters: 300, epoch: 6 | loss: 0.0080472
+	speed: 0.0185s/iter; left time: 25.9642s
+Epoch: 6 cost time: 6.423837900161743
+Epoch: 6, Steps: 340 | Train Loss: 0.0102375 Vali Loss: 0.0101036 Test Loss: 0.0198124
+Validation loss decreased (0.010273 --> 0.010104).  Saving model ...
+Updating learning rate to 3.125e-06
+	iters: 100, epoch: 7 | loss: 0.0094267
+	speed: 0.2571s/iter; left time: 324.1877s
+	iters: 200, epoch: 7 | loss: 0.0096404
+	speed: 0.0185s/iter; left time: 21.4287s
+	iters: 300, epoch: 7 | loss: 0.0076726
+	speed: 0.0183s/iter; left time: 19.4137s
+Epoch: 7 cost time: 6.501668453216553
+Epoch: 7, Steps: 340 | Train Loss: 0.0100179 Vali Loss: 0.0100202 Test Loss: 0.0198369
+Validation loss decreased (0.010104 --> 0.010020).  Saving model ...
+Updating learning rate to 1.5625e-06
+	iters: 100, epoch: 8 | loss: 0.0147540
+	speed: 0.2560s/iter; left time: 235.7311s
+	iters: 200, epoch: 8 | loss: 0.0097752
+	speed: 0.0179s/iter; left time: 14.6845s
+	iters: 300, epoch: 8 | loss: 0.0120263
+	speed: 0.0184s/iter; left time: 13.2521s
+Epoch: 8 cost time: 6.378634929656982
+Epoch: 8, Steps: 340 | Train Loss: 0.0099099 Vali Loss: 0.0100033 Test Loss: 0.0198389
+Validation loss decreased (0.010020 --> 0.010003).  Saving model ...
+Updating learning rate to 7.8125e-07
+	iters: 100, epoch: 9 | loss: 0.0100525
+	speed: 0.2560s/iter; left time: 148.7276s
+	iters: 200, epoch: 9 | loss: 0.0085402
+	speed: 0.0182s/iter; left time: 8.7387s
+	iters: 300, epoch: 9 | loss: 0.0092453
+	speed: 0.0179s/iter; left time: 6.8176s
+Epoch: 9 cost time: 6.382252216339111
+Epoch: 9, Steps: 340 | Train Loss: 0.0098433 Vali Loss: 0.0099966 Test Loss: 0.0198018
+Validation loss decreased (0.010003 --> 0.009997).  Saving model ...
+Updating learning rate to 3.90625e-07
+	iters: 100, epoch: 10 | loss: 0.0088703
+	speed: 0.2563s/iter; left time: 61.7798s
+	iters: 200, epoch: 10 | loss: 0.0096159
+	speed: 0.0285s/iter; left time: 4.0250s
+	iters: 300, epoch: 10 | loss: 0.0102173
+	speed: 0.0215s/iter; left time: 0.8835s
+Epoch: 10 cost time: 7.7291131019592285
+Epoch: 10, Steps: 340 | Train Loss: 0.0098220 Vali Loss: 0.0099903 Test Loss: 0.0198294
+Validation loss decreased (0.009997 --> 0.009990).  Saving model ...
+Updating learning rate to 1.953125e-07
+>>>>>>>testing : test_iTransformer_custom_MS_ft731_sl731_ll24_pl512_dm8_nh3_el1_dl512_df1_fctimeF_ebTrue_dtApril 1 Year Range_projection_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 3303
+test shape: (3303, 1, 24, 1) (3303, 1, 24, 1)
+test shape: (3303, 24, 1) (3303, 24, 1)
+mse:0.37927597761154175, mae:0.4664974808692932, rmse:0.6158538460731506, mape:0.02594711445271969, mspe:0.0011965271551162004
+>>>>>>>predicting : test_iTransformer_custom_MS_ft731_sl731_ll24_pl512_dm8_nh3_el1_dl512_df1_fctimeF_ebTrue_dtApril 1 Year Range_projection_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+pred 1
