@@ -300,8 +300,9 @@ class Exp_Long_Term_Forecast_Partial(Exp_Basic):
                 outputs = outputs.detach().cpu().numpy()
                 batch_y = batch_y.detach().cpu().numpy()
                 if test_data.scale and self.args.inverse:
-                    outputs = test_data.inverse_transform(outputs)
-                    batch_y = test_data.inverse_transform(batch_y)
+                    shape = outputs.shape
+                    outputs = test_data.inverse_transform(outputs.squeeze(0)).reshape(shape)
+                    batch_y = test_data.inverse_transform(batch_y.squeeze(0)).reshape(shape)
 
                 pred = outputs
                 true = batch_y
@@ -309,12 +310,13 @@ class Exp_Long_Term_Forecast_Partial(Exp_Basic):
                 preds.append(pred)
                 trues.append(true)
                 if i % 20 == 0:
-                    # if i == 4440:
                     input = batch_x.detach().cpu().numpy()
+                    if test_data.scale and self.args.inverse:
+                        shape = input.shape
+                        input = test_data.inverse_transform(input.squeeze(0)).reshape(shape)
                     gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
                     pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
                     visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
-                    # pdb.set_trace()
 
         preds = np.array(preds)
         trues = np.array(trues)
@@ -376,8 +378,11 @@ class Exp_Long_Term_Forecast_Partial(Exp_Basic):
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                     else:
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
-                pred = outputs.detach().cpu().numpy()  # .squeeze()
-                preds.append(pred)
+                outputs = outputs.detach().cpu().numpy()
+                if pred_data.scale and self.args.inverse:
+                    shape = outputs.shape
+                    outputs = pred_data.inverse_transform(outputs.squeeze(0)).reshape(shape)
+                preds.append(outputs)
 
         preds = np.array(preds)
         preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
